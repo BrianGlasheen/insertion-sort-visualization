@@ -2,12 +2,15 @@ import tkinter as tk
 import time
 from random import shuffle
 
+width = 1000
+
 root = tk.Tk()
 root.wm_title("Insertion Sort Visualization")
-root.wm_geometry("1000x500")
+root.wm_geometry(f"{width}x{width//2}")
 
-canvas = tk.Canvas(root, height=500, width=1000)
+canvas = tk.Canvas(root, height=width//2, width=width)
 canvas.pack()
+canvas.create_text(width//2, width//4, font=("Arial", 20, "bold"), text="Press any key")
 
 def insertion(x, obj):
     for j in range(1, len(x)):
@@ -39,12 +42,12 @@ def turn_all_green(obj):
         canvas.itemconfig(i, fill='green')
         time.sleep(max(1./100 - (time.time() - start), 0))
 
-def call():
+def call(width):
     canvas.delete('all')
 
     elements = 100
 
-    x = 1000//elements
+    x = width//elements
     y = x/2
 
     nums = list(range(1,elements+1))
@@ -53,11 +56,10 @@ def call():
     rect_list = []
 
     for i, num in enumerate(nums):
-        rect_list.append(canvas.create_rectangle(i*x, 500, i*x + x, 500-num*y, fill='black')) # bars fit to bottom
-        # rect_list.append(canvas.create_rectangle(i*x, 0, i*x + x, num*y, fill='black'))     # bars fit to top
+        rect_list.append(canvas.create_rectangle(i*x, width//2, i*x + x, (width//2)-num*y, fill='black'))
 
     insertion(nums, rect_list)
 
-root.bind("<Key>", lambda e: call())
+root.bind("<Key>", lambda e: call(width))
 
 root.mainloop()

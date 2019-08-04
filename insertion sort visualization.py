@@ -42,14 +42,19 @@ def turn_all_green(obj):
 def call():
     canvas.delete('all')
 
-    nums = list(range(1,101))
+    elements = 100
+
+    x = 1000//elements
+    y = x/2
+
+    nums = list(range(1,elements+1))
     shuffle(nums)
 
     rect_list = []
 
     for i, num in enumerate(nums):
-        rect_list.append(canvas.create_rectangle(i*10, 500, i*10 + 10, 500-num*5, fill='black')) # bars fit to bottom
-        # rect_list.append(canvas.create_rectangle(i*10, 0, i*10 + 10, num*5, fill='black'))     # bars fit to top
+        rect_list.append(canvas.create_rectangle(i*x, 500, i*x + x, 500-num*y, fill='black')) # bars fit to bottom
+        # rect_list.append(canvas.create_rectangle(i*x, 0, i*x + x, num*y, fill='black'))     # bars fit to top
 
     insertion(nums, rect_list)
 

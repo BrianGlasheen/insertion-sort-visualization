@@ -1,3 +1,3 @@
 # insertion-sort-visualization
 
-![Alt text](gif.gif?raw=true "map"
+![Alt text](gif.gif?raw=true "map")
